@@ -4,8 +4,9 @@
       "startServerCommand": "npm run preview",
       "url": [
         "http://localhost:4173/",
-        "http://localhost:4173/items",
-        "http://localhost:4173/realtime"
+        "http://localhost:4173/mercado",
+        "http://localhost:4173/finalizar-compra",
+        "http://localhost:4173/perfil"
       ],
       "numberOfRuns": 1,
       "settings": {

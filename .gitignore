@@ -2,6 +2,8 @@
 playwright-report/
 test-results/
 test-home.png
+lighthouse-report/
+.lighthouseci/
 
 *.log
 npm-debug.log*

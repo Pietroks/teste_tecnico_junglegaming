@@ -46,4 +46,23 @@ test.describe('Navegação e Roteamento - Kurio NFT Marketplace', () => {
     await page.getByRole('button', { name: 'Entrar', exact: true }).click()
     await expect(page.getByPlaceholder('contato@email.com')).toBeVisible()
   })
+
+  test('deve alternar as imagens do carrossel do hero ao clicar nos botões elipse', async ({ page }) => {
+    await page.goto('/')
+
+    const heroImg = page.locator('section img[alt^="Destaque Kurio"]')
+    await expect(heroImg).toHaveAttribute('alt', 'Destaque Kurio 1')
+
+    // Clica no segundo botão elipse
+    await page.getByRole('button', { name: 'Ver imagem 2' }).click()
+    await expect(heroImg).toHaveAttribute('alt', 'Destaque Kurio 2')
+
+    // Clica no terceiro botão elipse
+    await page.getByRole('button', { name: 'Ver imagem 3' }).click()
+    await expect(heroImg).toHaveAttribute('alt', 'Destaque Kurio 3')
+
+    // Clica de volta no primeiro botão elipse
+    await page.getByRole('button', { name: 'Ver imagem 1' }).click()
+    await expect(heroImg).toHaveAttribute('alt', 'Destaque Kurio 1')
+  })
 })

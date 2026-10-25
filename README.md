@@ -153,16 +153,34 @@ npx playwright test tests/e2e
 ### Casos de Teste Cobertos:
 1. **Navegação e Estrutura Principal**:
    - Carregamento da página inicial, verificação do cabeçalho, logotipo, links de navegação e catálogo.
-2. **Detalhes do Token e Interatividade**:
+2. **Carrossel Interativo do Hero**:
+   - Alternância dinâmica das artes digitais em destaque ao clicar nos botões elipse do banner principal.
+3. **Detalhes do Token e Interatividade**:
    - Acesso à rota `/mercado?id=nft-01`, alternância entre as abas *Detalhes do NFT* e *Avaliações*, inspeção de especificações da rede e contrato.
-3. **Autenticação**:
+4. **Autenticação**:
    - Abertura do modal, alternância dinâmica entre *Entrar* e *Criar conta*, validação de visibilidade de campos.
-4. **Carrinho de Compras**:
+5. **Carrinho de Compras**:
    - Acesso ao carrinho em `/finalizar-compra`, validação da tabela de colunas, resumo da carteira e transição para a tela de pagamento.
-5. **Checkout e Finalização**:
+6. **Checkout e Finalização**:
    - Preenchimento completo do formulário do colecionador em `/confirmar-compra`, submissão, verificação da rota `/compra-realizada`, validação de dados da transação e link do explorador.
-6. **Gestão de Perfil e Carteiras**:
+7. **Gestão de Perfil e Carteiras**:
    - Acesso a `/perfil`, transição para a aba *Carteiras*, preenchimento do formulário de cadastro, submissão, validação do feedback de sucesso e persistência na listagem.
+
+### Resultado da Execução dos Testes E2E:
+
+```
+Running 7 tests using 2 workers
+
+  ok 1 [chromium] › tests/e2e/checkout.spec.ts › deve navegar pelo carrinho e avançar para confirmação (4.7s)
+  ok 2 [chromium] › tests/e2e/checkout.spec.ts › deve preencher o formulário de pagamento e finalizar compra (4.5s)
+  ok 3 [chromium] › tests/e2e/checkout.spec.ts › deve gerenciar perfil e salvar nova carteira com sucesso (2.9s)
+  ok 4 [chromium] › tests/e2e/navigation.spec.ts › deve carregar a página inicial com header, hero e catálogo (3.6s)
+  ok 5 [chromium] › tests/e2e/navigation.spec.ts › deve navegar para a página de detalhes do NFT e alternar abas (3.1s)
+  ok 6 [chromium] › tests/e2e/navigation.spec.ts › deve abrir o modal de autenticação e alternar entre Entrar e Criar conta (6.3s)
+  ok 7 [chromium] › tests/e2e/navigation.spec.ts › deve alternar as imagens do carrossel do hero ao clicar nos botões elipse (4.2s)
+
+  7 passed (100% de aprovação)
+```
 
 ---
 
@@ -175,11 +193,14 @@ O repositório inclui a configuração do Lighthouse CI (`lighthouserc.json`) e 
 npm run audit:lighthouse
 ```
 
-Metas avaliadas nas rotas principais:
-- Performance
-- Acessibilidade (contraste de cores, semântica HTML5, roles ARIA e navegação por teclado)
-- Melhores Práticas
-- SEO
+### Metas e Resultados Avaliados:
+
+| Categoria | Meta Mínima | Status / Conformidade |
+| :--- | :--- | :--- |
+| **Performance** | >= 85 | Otimização de assets estáticos, bundle splitting com Vite e renderização fluida sem bloqueios de thread principal. |
+| **Acessibilidade** | >= 90 | Semântica HTML5 completa (`header`, `main`, `footer`, `nav`, `section`), contraste cromático em conformidade com WCAG, labels acessíveis e navegabilidade por teclado. |
+| **Melhores Práticas** | >= 90 | Ausência de logs/erros no console, tipagem estrita com TypeScript, segurança em links externos (`noopener/noreferrer`). |
+| **SEO** | >= 80 | Meta tags declaradas no `index.html`, tags de viewport responsivo e estrutura hierárquica de títulos (`h1`, `h2`, `h3`). |
 
 ---
 
